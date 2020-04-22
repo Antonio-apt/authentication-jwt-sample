@@ -1,13 +1,6 @@
 'use strict'
 
-const jwt = require('jsonwebtoken');
-const config = {
-    jwtSecret: process.env.jwt_secret,
-    tokenExpireTime: process.env.token_expire_time
-}
-
-const authService = require('../services/AuthService')
-//services
+const authService = require('../services/AuthService');
 
 const obj = {
     login: (req, res, next) => {
@@ -17,12 +10,12 @@ const obj = {
             })
         }
         authService.authenticate(req).then(
-            resp =>{
+            resp => {
                 res.status(200).send({
                     token: resp
                 })
             }
-        ).catch(err=>{
+        ).catch(err => {
                 res.status(400).send({
                     message: err.message
                 })
