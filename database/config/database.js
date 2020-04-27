@@ -1,9 +1,9 @@
 module.exports = {
-    dialect: process.env.dialect,
-    storage: process.env.storage,
-    define:{
+    dialect: 'sqlite',
+    storage: 'database.db',
+    define: {
         //CreatedAt - UpdatedAt
-        timestamps: true,
-        underscored: false,
+        timestamps: false,
+        underscored: true,
     }
-}
+};
