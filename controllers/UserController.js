@@ -1,17 +1,28 @@
-'use strict'
+"use strict";
 
-//services
-
+const userService = require("../services/UserService");
 
 const obj = {
-    register: (req, res, next) => {
-        if(!req.body){
+    register: async (req, res, next) => {
+        if (!req.body) {
             return res.status(400).send({
-                message: 'Invalid data'
-            })
+                message: "Invalid data",
+            });
         }
-        
+        console.log(req.body)
+        userService
+            .register(req.body)
+            .then((resp) => {
+                res.status(200).send({
+                    message: `User ${resp} successfully created`,
+                });
+            })
+            .catch(error => {
+                res.status(400).send({
+                    message: error,
+                });
+            });
     },
-}
+};
 
 module.exports = obj;

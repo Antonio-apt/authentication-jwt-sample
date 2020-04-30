@@ -1,27 +1,36 @@
-'use strict'
+"use strict";
+const passport = require("passport");
+const jwt = require("jsonwebtoken");
 
-const authService = require('../services/AuthService');
 
 const obj = {
-    login: (req, res, next) => {
-        if(!req.body.user || !req.body.password){
-            return res.status(400).send({
-                message: "Invalid data"
-            })
+  login: async (req, res, next) => {
+    passport.authenticate("/login", async (err, user, info) => {
+      try {
+        if (err || !user) {
+          const error = new Error("a new error occured");
+          return next(error);
         }
-        authService.authenticate(req).then(
-            resp => {
-                res.status(200).send({
-                    token: resp
-                })
-            }
-        ).catch(err => {
-                res.status(400).send({
-                    message: err.message
-                })
-        })
+        req.login(user, {
+          session: false
+        }, async (error) => {
+          if (error) return next(error);
+          const body = {
+            _id: user._id,
+            email: user.email
+          };
+          const token = jwt.sign({
+            user: body
+          }, process.env.jwt_secret);
+          return res.json({
+            token
+          });
+        });
+      } catch (error) {
+        return error;
+      }
+    });
+  },
+};
 
-    },
-}
-
-module.exports = obj
+module.exports = obj;
