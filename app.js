@@ -1,10 +1,10 @@
 "use strict";
 
 const express = require("express");
-const passport = require("passport");
-const bodyParser = require("body-parser");
 const dotenv = require("dotenv");
 const result = dotenv.config();
+const passport = require("passport");
+const bodyParser = require("body-parser");
 const compression = require("compression");
 
 require("./auth/Auth");

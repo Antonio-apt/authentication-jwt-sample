@@ -44,7 +44,7 @@ passport.use(
 );
 
 const opts = {
-    secretOrKey: "top_secret",
+    secretOrKey: process.env.jwt_secret,
     jwtFromRequest: ExtractJWT.fromAuthHeaderWithScheme('JWT'),
 }
 
