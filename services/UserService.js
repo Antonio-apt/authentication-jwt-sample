@@ -19,5 +19,5 @@ exports.register = async data => {
             return Promise.reject(err.message);
         }
     }
-    throw new Error('Invalid data');
+    return Promise.reject("Invalid Data");
 }

@@ -7,7 +7,7 @@ const dotenv = require("dotenv");
 const result = dotenv.config();
 const compression = require("compression");
 
-require("./middlewares/AuthMiddleware");
+require("./auth/Auth");
 
 const app = express();
 app.use(compression());
@@ -23,12 +23,10 @@ app.use(
     })
 );
 
+app.use(passport.initialize());
+
 const routes = require("./routes/routes");
-const secureRoutes = require('./routes/secure-routes')
 app.use("/", routes);
-app.use("/user", passport.authenticate('jwt', {
-    session: false
-}, secureRoutes))
 
 const port = process.env.PORT || 3000;
 app.set("port", port);

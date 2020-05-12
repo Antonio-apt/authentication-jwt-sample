@@ -35,13 +35,11 @@ module.exports = (sequelize, Sequelize) => {
                             throw new Error(err);
                         });
                 },
+
             },
         }
     );
 
-    User.prototype.isValidPassword = async (password) => {
-        return bcrypt.compare(password, this.password);
-    };
 
     return User;
 };
