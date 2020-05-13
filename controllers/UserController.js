@@ -2,7 +2,6 @@
 
 const userService = require("../services/UserService");
 const passport = require('passport');
-const jwt = require('jsonwebtoken');
 
 const obj = {
     register: async (req, res, next) => {
@@ -39,10 +38,10 @@ const obj = {
                     message: info
                 })
             }
+            userService.profile(user);
             res.json({
-                message: 'You made it to the secure route',
-                user: req.user,
-                token: req.query.secret_token
+                user: user.dataValues.name,
+                token: req.headers.authorization
             })
         })(req, res, next);
     }
