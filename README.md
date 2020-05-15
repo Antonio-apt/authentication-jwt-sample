@@ -34,7 +34,7 @@ To configure the database you must:
 
 The api has only 3 routes for demonstration, one dedicated to the registration of users, a route to the login of these users and a protected route where only those logged in have access
 
-#### Register
+### Register
 
 **POST** in `/register`route with the example body:
 ``` json
@@ -52,7 +52,7 @@ Api's successful return must be:
 }
 ```
 
-#### Login
+### Login
 
 POST in `/login` route with the example body:
 
@@ -71,7 +71,7 @@ Api's successful return should be:
 }
 ```
 
-#### Profile
+### Profile
 
 GET in `/profile` route with the example header:
 
