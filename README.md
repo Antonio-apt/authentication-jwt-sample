@@ -39,16 +39,16 @@ The api has only 3 routes for demonstration, one dedicated to the registration o
 **POST** in `/register`route with the example body:
 ``` json
  {
-   "name": "test",
-	"email": "test@test",
-	"password": "pass"
+    "name": "test",
+    "email": "test@test",
+    "password": "pass"
 }
 ```
 Api's successful return must be:
 
 ``` json
 {
-  "message": "User test successfully created"
+    "message": "User test successfully created"
 }
 ```
 
@@ -67,7 +67,7 @@ Api's successful return should be:
 
 ``` json
 {
-  "token": "{token here}"
+    "token": "{token here}"
 }
 ```
 
@@ -81,8 +81,8 @@ Api's successful return should be:
 
 ``` json
 {
-  "user": "Jose",
-  "token": "JWT {token here}"
+    "user": "Jose",
+    "token": "JWT {token here}"
 }
 ```
 
